@@ -259,6 +259,7 @@ class ObjectController(BaseObjectController):
     @check_if_none_match
     def POST(self, req):
         """HTTP POST request handler."""
+        print(req.environ)
         container_info = self.container_info(
             self.account_name, self.container_name, req)
         req.acl = container_info['write_acl']
