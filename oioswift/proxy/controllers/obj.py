@@ -259,7 +259,6 @@ class ObjectController(BaseObjectController):
     @check_if_none_match
     def POST(self, req):
         """HTTP POST request handler."""
-        print(req.environ)
         container_info = self.container_info(
             self.account_name, self.container_name, req)
         req.acl = container_info['write_acl']
@@ -339,6 +338,7 @@ class ObjectController(BaseObjectController):
 
     def _prepare_headers(self, req):
         req.headers['X-Timestamp'] = Timestamp(time.time()).internal
+        req.headers['X-oio-storage-class'] = req.environ['swift.storage_class']
         headers = self.generate_request_headers(req, additional=req.headers)
         return headers
 
