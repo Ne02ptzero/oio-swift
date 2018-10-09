@@ -339,6 +339,7 @@ class ObjectController(BaseObjectController):
     def _prepare_headers(self, req):
         req.headers['X-Timestamp'] = Timestamp(time.time()).internal
         req.headers['X-oio-storage-class'] = req.environ['swift.storage_class']
+        print("Adding header here!")
         headers = self.generate_request_headers(req, additional=req.headers)
         return headers
 
