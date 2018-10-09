@@ -491,7 +491,7 @@ class ObjectController(BaseObjectController):
                 policy = self._get_auto_policy_from_size(content_length)
 
         metadata = self.load_object_metadata(headers)
-        oio_headers = {'X-oio-req-id': self.trans_id, 'X-oio-storage-class': req.headers['X-oio-storage-class']}
+        oio_headers = {'X-oio-req-id': self.trans_id, 'X-oio-storage-class': req.headers['X-oio-storage-class'], 'test': 'oui'}
         try:
             # FIXME(FVE): use 'properties' instead of 'metadata'
             # as soon as we require oio>=4.2.0
